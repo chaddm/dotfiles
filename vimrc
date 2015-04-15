@@ -32,6 +32,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'vim-scripts/dbext.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -236,6 +237,28 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
+
+" dbext
+let g:dbext_default_type = 'PGSQL'
+let g:dbext_default_profile_Local_N360 = 'type=PGSQL:host=localhost:dbname=network360_development'
+let g:dbext_default_profile_Local_Provider_Nexus = 'type=PGSQL:host=localhost:dbname=provider_nexus'
+let g:dbext_default_profile_Local_Provider_Nexus_Test = 'type=PGSQL:host=localhost:dbname=provider_nexus_test'
+let g:dbext_default_profile = 'Local_Provider_Nexus_Test'
+
+" -- results buffer
+let g:dbext_default_buffer_lines          = 20
+let g:dbext_default_use_sep_result_buffer = 1
+let g:dbext_display_command_line          = 1
+
+" -- misc config
+let g:dbext_default_always_prompt_for_variables = -1 " never prompt for variables
+
+" set up autocompletion for SQL
+autocmd FileType sql set omnifunc=sqlcomplete#Complete
+autocmd FileType pgsql set omnifunc=sqlcomplete#Complete
+
+" set file type for Postgres for SQL files
+au BufNewFile,BufRead *.sql set ft=pgsql
 
 " File layouts
 set noswapfile
