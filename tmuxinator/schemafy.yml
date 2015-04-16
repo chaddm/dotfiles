@@ -1,0 +1,13 @@
+# ~/.tmuxinator/schemafy.yml
+
+name: schemafy
+root: ~/Workspace/Personal/schemafy/
+
+windows:
+  - editor:
+      layout: 0881,120x39,0,0{77x39,0,0,0,42x39,78,0[42x19,78,0,2,42x19,78,20,3]}
+      panes:
+        - vim
+        - gulp|bunyan
+        - gulp test -w
+  - git: git st
