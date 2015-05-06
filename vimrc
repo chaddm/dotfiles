@@ -33,6 +33,7 @@ Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'vim-scripts/dbext.vim'
+Plugin 'aquach/vim-http-client'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
