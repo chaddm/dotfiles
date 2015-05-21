@@ -10,5 +10,4 @@ windows:
         - vim
         - LOG_LEVEL=debug gulp|bunyan
         - NODE_ENV=test gulp test -w
-  - git: git st
   - pg: psql provider_nexus
