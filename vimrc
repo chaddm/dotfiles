@@ -7,7 +7,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
 Plugin 'tpope/vim-fugitive'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
@@ -15,8 +14,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'scrooloose/syntastic'
 Plugin 'mhinz/vim-signify'
@@ -32,8 +32,10 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'vim-scripts/dbext.vim'
 Plugin 'aquach/vim-http-client'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'nanotech/jellybeans.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -93,7 +95,8 @@ endif
 " Solarized
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme grb256
+
 " Let us switch from Solarized light to dark and back.
 map <Leader>l :set background=light<CR>
 map <Leader>d :set background=dark<CR>
@@ -216,3 +219,8 @@ function! InitializeDirectories()
   endfor
 endfunction
 call InitializeDirectories()
+
+map <C-e> :NERDTreeToggle<CR>
+
+set t_Co=256
+

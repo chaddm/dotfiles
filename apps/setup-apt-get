@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo apt-get update
+sudo apt-get -y install git zsh build-essential htop cmake python-dev libssl-dev ncurses-dev m4 python-pip
+sudo pip install powerline-status

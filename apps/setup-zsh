@@ -1,0 +1,10 @@
+#!/bin/zsh
+cd ~
+rm -rf .zprezto
+git clone --recursive https://github.com/chaddm/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+chsh -s /bin/zsh
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+

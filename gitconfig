@@ -1,43 +1,54 @@
-[user]
-  name = Eric Biven
-  email = eric@biven.us
 [core]
-  editor = vim
-  pager = less -x4
-  excludesfile = /Users/ebiven/.gitignore_global
-  commentchar = "#"
-[push]
-  default = current
+	editor = vim
 [color]
-  status = auto
-  branch = auto
-  diff = auto
-[color "branch"]
-  current = red reverse
-  local = blue
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[alias]
+	cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+	mt = mergetool
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative HEAD
+	lgd = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative HEAD develop
+	lgm = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative HEAD master
+	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+	st = status
+	rsync = remote update --prune
+	pl = pull --rebase
+	ps = push
+  cp = cherry-pick -x
+  rh = reset --hard
+  r = rebase
+  ri = rebase -i
+  a = add
+  ai = add -i
+  co = checkout
+  pst = push --tags
+  rl = reflog
+  com = commit
+  comall = commit -a
+  d = diff
+  dw = diff --cached
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	previous = log -1 HEAD~1
+[apply]
+  whitespace = nowarn
 [push]
   default = tracking
+[mergetool]
+	keepBackup = false
+[diff]
+	noprefix = true
+	tool = diffmerge
+[format]
+	pretty = fuller
 [pull]
-  default = current
-[alias]
-  lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-  lg = !"git lg1"
-  co = checkout
-  st = status
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	rebase = true
+[difftool "diffmerge"]
+	cmd = diffmerge $LOCAL $REMOTE
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
 	trustExitCode = true
