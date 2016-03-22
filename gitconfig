@@ -52,3 +52,5 @@
 [mergetool "diffmerge"]
 	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
 	trustExitCode = true
+[remote "origin"]
+	prune = true
